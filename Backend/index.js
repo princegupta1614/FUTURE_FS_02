@@ -26,7 +26,7 @@ app.use(express.json());
 
 // ✅ Add session middleware BEFORE routes
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'PrinceGupta1230', // store in .env
+    secret: 'PrinceGupta1230', // store in .env
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -53,6 +53,6 @@ mongoose.connect(process.env.DBURL)
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error("MongoDB connection error:", err));
 
-app.listen(process.env.PORT || 8000, () => {
-    console.log(`App is running at : http://localhost:${process.env.PORT || 8000}`);
+app.listen(process.env.PORT, () => {
+    console.log(`App is running at : http://localhost:${process.env.PORT}`);
 });
