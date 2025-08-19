@@ -19,7 +19,7 @@ const CategorySelector = ({ onCategoryChange }) => {
 
     const getCategories = async () => {
         try {
-            const res = await axios.get("/api/product/categories");
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/product/categories`);
             const addAllCategory = res.data;
             addAllCategory.unshift(allCategory);
             setCategories(addAllCategory);

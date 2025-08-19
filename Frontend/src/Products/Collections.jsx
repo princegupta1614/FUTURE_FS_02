@@ -12,7 +12,7 @@ const Collections = () => {
         setLoading(true);
         try {
             // const res = await axios.get(`/api/product/all-products`);
-            const res = await axios.get(`/api/product/by-category?id=${categoryId}`);
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/product/by-category?id=${categoryId}`);
             setProducts(res.data);
         } catch (err) {
             console.log("Error fetching products:", err);

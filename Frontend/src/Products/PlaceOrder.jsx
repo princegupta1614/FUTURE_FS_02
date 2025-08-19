@@ -10,7 +10,7 @@ export default function PlaceOrder({ cart, onOrderPlaced }) {
 
   useEffect(() => {
     if (!cart) {
-      axios.get("/api/cart", { withCredentials: true })
+      axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cart`, { withCredentials: true })
         .then((res) => {
           setLocalCart(res.data);
         })
@@ -44,7 +44,7 @@ export default function PlaceOrder({ cart, onOrderPlaced }) {
   const handlePlaceOrder = async () => {
     setError(null);
     try {
-      await axios.post("/api/orders/place", {}, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/place`, {}, { withCredentials: true });
       toast.success(`Order placed successfully with ${paymentMethod}!`);
       onOrderPlaced?.();
     } catch (err) {

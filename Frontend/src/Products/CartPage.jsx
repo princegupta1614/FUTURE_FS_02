@@ -10,7 +10,7 @@ export default function CartPage() {
 
     const fetchCart = async () => {
         try {
-            const res = await axios.get("/api/cart", { withCredentials: true });
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cart`, { withCredentials: true });
             setCart(res.data.items || []);
         } catch (err) {
             console.error(err);
@@ -32,7 +32,7 @@ export default function CartPage() {
         if (quantity < 1) return;
         try {
             await axios.put(
-                `/api/cart/update/${productId}`,
+                `${import.meta.env.VITE_BACKEND_URL}/api/cart/update/${productId}`,
                 { quantity },
                 { withCredentials: true }
             );
@@ -44,7 +44,7 @@ export default function CartPage() {
 
     const removeItem = async (productId) => {
         try {
-            await axios.delete(`/api/cart/remove/${productId}`, { withCredentials: true });
+            await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/cart/remove/${productId}`, { withCredentials: true });
             fetchCart();
         } catch (err) {
             console.error(err);

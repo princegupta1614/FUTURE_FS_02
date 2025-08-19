@@ -15,7 +15,7 @@ export default function AdminLogin() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/api/admin/login", { username, password }, { withCredentials: true });
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username, password }, { withCredentials: true });
             toast.success(res.data.message);
             // window.location.href = "/admin";
             navigate("/admin");

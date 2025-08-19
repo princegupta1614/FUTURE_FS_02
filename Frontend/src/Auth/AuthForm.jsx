@@ -34,7 +34,7 @@ const AuthForm = () => {
       email: formData.email,
       password: formData.password
     });
-    axios.post('/api/login/user', {
+    axios.post('${import.meta.env.VITE_BACKEND_URL}/api/login/user', {
       email: formData.email,
       password: formData.password
     }, { withCredentials: true })
@@ -49,7 +49,7 @@ const AuthForm = () => {
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     console.log("REGISTER DATA:", formData);
-    axios.post('/api/register/user', { ...formData })
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register/user`, { ...formData })
       .then(res => {
         console.log("Success: ", res.data);
       })

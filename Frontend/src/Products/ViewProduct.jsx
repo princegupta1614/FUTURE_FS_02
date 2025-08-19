@@ -28,7 +28,7 @@ function ViewProduct() {
 
     const getProduct = async () => {
         try {
-            const res = await axios.get(`/api/product/view-product/${productId}`);
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/product/view-product/${productId}`);
             setProduct(res.data[0]); // Adjust depending on your API response
             document.title = res.data[0].title;
         } catch (err) {

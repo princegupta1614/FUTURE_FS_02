@@ -16,7 +16,7 @@ export default function AdminDashboard() {
     // Fetch Products
     useEffect(() => {
         if (activeTab === "products") {
-            axios.get("/api/product/by-category?id=")
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/product/by-category?id=`)
                 .then(res => setProducts(res.data))
                 .catch(err => console.error(err))
                 .finally(() => setLoading(false));
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
     // Fetch Orders
     useEffect(() => {
         if (activeTab === "orders") {
-            axios.get("/api/admin/orders", { withCredentials: true })
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders`, { withCredentials: true })
                 .then(res => setOrders(res.data))
                 .catch(err => console.error(err))
                 .finally(() => setLoading(false));
@@ -35,7 +35,7 @@ export default function AdminDashboard() {
 
     const updateStatus = async (id, status) => {
         try {
-            await axios.put(`/api/admin/orders/${id}/status`, { status }, { withCredentials: true });
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders/${id}/status`, { status }, { withCredentials: true });
             setOrders(prev =>
                 prev.map(order =>
                     order._id === id ? { ...order, status } : order
@@ -52,7 +52,7 @@ export default function AdminDashboard() {
 
     const handleLogout = () => {
         axios
-            .post("/api/admin/logout", {}, { withCredentials: true })
+            .post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/logout`, {}, { withCredentials: true })
             .then(() => {
                 // window.location.href = "/admin-login";
                 navigate("/admin-login");

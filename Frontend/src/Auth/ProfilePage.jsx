@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     axios
-      .get("/api/profile", { withCredentials: true }) 
+      .get("${import.meta.env.VITE_BACKEND_URL}/api/profile", { withCredentials: true }) 
       .then((res) => {
         setUser(res.data.user);
         setLoading(false);
@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
   const handleLogout = () => {
     axios
-      .post("/api/logout", {}, { withCredentials: true })
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/logout`, {}, { withCredentials: true })
       .then(() => {
         window.location.href = "/login";
       })

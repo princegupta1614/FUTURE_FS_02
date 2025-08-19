@@ -12,7 +12,7 @@ function Navbar() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/api/profile", { credentials: "include" })
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/profile`, { credentials: "include" })
             .then(res => {
                 if (res.ok) {
                     setIsLoggedIn(true);

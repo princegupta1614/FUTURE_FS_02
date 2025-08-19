@@ -8,7 +8,7 @@ export default function MyOrders() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get("/api/orders/myorders", { withCredentials: true })
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/myorders`, { withCredentials: true })
             .then((res) => {
                 setOrders(res.data.orders || []);
             })
